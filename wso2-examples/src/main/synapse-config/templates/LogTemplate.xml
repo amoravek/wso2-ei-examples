@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="LogTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="messagePrefix"/>
+    <sequence>
+        <property description="prefix" expression="$func:messagePrefix" name="prefix" scope="default" type="STRING"/>
+        <filter xpath="$func:messagePrefix = null">
+            <then>
+                <property name="prefix" scope="default" type="STRING" value="### UNDEFINED ###"/>
+            </then>
+            <else/>
+        </filter>
+        <log description="Log message" level="full">
+            <property expression="$ctx:prefix" name="MESSAGE"/>
+            <property expression="json-eval($.)" name="JSON"/>
+        </log>
+    </sequence>
+</template>

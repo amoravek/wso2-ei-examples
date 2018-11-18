@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="service-address-ep" groupId="cz.amoravek.wso2.examples.wso2-examples-reg.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+        <item>
+            <file>service-address-ep.xml</file>
+            <path>/_system/governance/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="service-http-ep" groupId="cz.amoravek.wso2.examples.wso2-examples-reg.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+        <item>
+            <file>service-http-ep.xml</file>
+            <path>/_system/governance/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="utils_js" groupId="cz.amoravek.wso2.examples.wso2-examples-reg.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+        <item>
+            <file>utils.js</file>
+            <path>/_system/config/custom</path>
+            <mediaType>application/javascript</mediaType>
+        </item>
+    </artifact>
+</artifacts>

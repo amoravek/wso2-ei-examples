@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Aggregation" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <call-template description="Log" target="LogTemplate">
+        <with-param name="messagePrefix" value="### AGG - ENTRY ###"/>
+    </call-template>
+    <property description="root" name="root" scope="default">
+        <root xmlns=""/>
+    </property>
+    <aggregate id="clone1">
+        <completeCondition>
+            <messageCount max="-1" min="-1"/>
+        </completeCondition>
+        <onComplete enclosingElementProperty="root" expression="//jsonObject">
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### AGG - COMPLETE ###"/>
+            </call-template>
+            <enrich>
+                <source clone="false" type="inline">
+                    <from xmlns="">AGGREGATOR</from>
+                </source>
+                <target action="sibling" xpath="//root"/>
+            </enrich>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### IN AGG - CALLING ###"/>
+            </call-template>
+            <send>
+                <endpoint key="TestServiceEP"/>
+            </send>
+        </onComplete>
+    </aggregate>
+</sequence>

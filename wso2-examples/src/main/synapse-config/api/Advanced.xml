@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/wso2/examples/advanced" name="Advanced" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/foreach">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <foreach description="" expression="//jsonObject/parts" id="for">
+                <sequence>
+                    <sequence key="LogMessage"/>
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <extPart xmlns="">
+                                <name>$1</name>
+                                <info>Some info...</info>
+                            </extPart>
+                        </format>
+                        <args>
+                            <arg evaluator="xml" expression="//parts/text()"/>
+                        </args>
+                    </payloadFactory>
+                    <sequence key="LogMessage"/>
+                    <enrich description="Set base price">
+                        <source clone="true" type="inline">
+                            <info xmlns="">
+                                <material>M</material>
+                                <position>-</position>
+                            </info>
+                        </source>
+                        <target xpath="//extPart/info"/>
+                    </enrich>
+                    <sequence key="LogMessage"/>
+                    <property description="counter" expression="get-property('for_FOREACH_COUNTER')" name="counter" scope="default" type="STRING"/>
+                    <enrich description="Set fraction">
+                        <source clone="true" property="counter" type="property"/>
+                        <target xpath="//extPart/info/position"/>
+                    </enrich>
+                    <sequence key="LogMessage"/>
+                </sequence>
+            </foreach>
+            <property description="Set messageType" name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/clone">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <clone id="clone1">
+                <target>
+                    <sequence>
+                        <sequence key="LogMessage"/>
+                        <enrich>
+                            <source clone="true" type="inline">
+                                <branch xmlns="">1</branch>
+                            </source>
+                            <target action="child" xpath="//jsonObject"/>
+                        </enrich>
+                        <sequence key="LogMessage"/>
+                        <call>
+                            <endpoint key="TestServiceEP"/>
+                        </call>
+                        <loopback/>
+                    </sequence>
+                </target>
+                <target>
+                    <sequence>
+                        <sequence key="LogMessage"/>
+                        <enrich>
+                            <source clone="true" type="inline">
+                                <branch xmlns="">2</branch>
+                            </source>
+                            <target action="child" xpath="//jsonObject"/>
+                        </enrich>
+                        <sequence key="LogMessage"/>
+                        <call>
+                            <endpoint key="TestServiceEP"/>
+                        </call>
+                        <loopback/>
+                    </sequence>
+                </target>
+                <target>
+                    <sequence>
+                        <sequence key="LogMessage"/>
+                        <enrich>
+                            <source clone="true" type="inline">
+                                <branch xmlns="">3</branch>
+                            </source>
+                            <target action="child" xpath="//jsonObject"/>
+                        </enrich>
+                        <sequence key="LogMessage"/>
+                        <call>
+                            <endpoint key="TestServiceEP"/>
+                        </call>
+                        <loopback/>
+                    </sequence>
+                </target>
+            </clone>
+        </inSequence>
+        <outSequence>
+            <property description="root" name="root" scope="default">
+                <root xmlns=""/>
+            </property>
+            <aggregate description="" id="clone1">
+                <completeCondition>
+                    <messageCount max="-1" min="-1"/>
+                </completeCondition>
+                <onComplete enclosingElementProperty="root" expression="//jsonObject">
+                    <call-template description="Log message" target="LogTemplate">
+                        <with-param name="messagePrefix" value="### AGG_IN ###"/>
+                    </call-template>
+                    <property description="payload" name="payload" scope="default" type="STRING" value="value"/>
+                    <enrich>
+                        <source clone="true" type="body"/>
+                        <target property="payload" type="property"/>
+                    </enrich>
+                    <call-template description="Log message" target="LogTemplate">
+                        <with-param name="messagePrefix" value="### OUT ###"/>
+                    </call-template>
+                    <respond/>
+                </onComplete>
+            </aggregate>
+        </outSequence>
+        <faultSequence>
+            <sequence key="ErrorReport"/>
+            <respond/>
+        </faultSequence>
+    </resource>
+    <resource methods="POST" uri-template="/rest">
+        <inSequence>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### START ###"/>
+            </call-template>
+            <call description="">
+                <endpoint key="TestServiceEP"/>
+            </call>
+            <property description="counter" name="counter" scope="default" type="INTEGER" value="1"/>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### CALL1-END ###"/>
+            </call-template>
+            <script description="Tag" function="transform" key="conf:custom/utils.js" language="js"/>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### ENRICH1 ###"/>
+            </call-template>
+            <call>
+                <endpoint key="gov:endpoints/service-address-ep.xml"/>
+            </call>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### CALL2-END ###"/>
+            </call-template>
+            <script description="Tag" function="transform" key="conf:custom/utils.js" language="js"/>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### ENRICH2 ###"/>
+            </call-template>
+            <call>
+                <endpoint key="gov:endpoints/service-http-ep.xml"/>
+            </call>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### CALL3-END ###"/>
+            </call-template>
+            <script description="Tag" function="transform" key="conf:custom/utils.js" language="js"/>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### ENRICH3 ###"/>
+            </call-template>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence>
+            <sequence key="ErrorReport"/>
+            <respond/>
+        </faultSequence>
+    </resource>
+    <resource methods="POST" uri-template="/parallelserial">
+        <inSequence>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### ENTRY ###"/>
+            </call-template>
+            <clone id="clone1">
+                <target>
+                    <sequence>
+                        <call-template description="Log" target="LogTemplate">
+                            <with-param name="messagePrefix" value="### TARGET1 - ENTRY ###"/>
+                        </call-template>
+                        <enrich>
+                            <source clone="false" type="inline">
+                                <calledInParallel xmlns="">1</calledInParallel>
+                            </source>
+                            <target action="child" xpath="//jsonObject"/>
+                        </enrich>
+                        <send description="" receive="Aggregation">
+                            <endpoint key="TestServiceEP"/>
+                        </send>
+                    </sequence>
+                </target>
+                <target>
+                    <sequence>
+                        <call-template description="Log" target="LogTemplate">
+                            <with-param name="messagePrefix" value="### TARGET2 - ENTRY ###"/>
+                        </call-template>
+                        <enrich>
+                            <source clone="false" type="inline">
+                                <calledInParallel xmlns="">2</calledInParallel>
+                            </source>
+                            <target action="child" xpath="//jsonObject"/>
+                        </enrich>
+                        <send description="" receive="Aggregation">
+                            <endpoint key="TestServiceEP"/>
+                        </send>
+                    </sequence>
+                </target>
+            </clone>
+        </inSequence>
+        <outSequence>
+            <enrich>
+                <source clone="false" type="inline">
+                    <finish xmlns="">YES</finish>
+                </source>
+                <target action="child" xpath="//jsonObject"/>
+            </enrich>
+            <call-template description="Log" target="LogTemplate">
+                <with-param name="messagePrefix" value="### FINISH ###"/>
+            </call-template>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

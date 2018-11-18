@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="service-address-ep" xmlns="http://ws.apache.org/ns/synapse">
+    <address uri="http://localhost:8280/wso2/examples/test/testsvc"/>
+</endpoint>

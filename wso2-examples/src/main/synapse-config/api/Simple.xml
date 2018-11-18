@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/wso2/examples/simple" name="Simple" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/base">
+        <inSequence>
+            <log description="Log JSON request" level="custom">
+                <property expression="json-eval($.)" name="JSON REQUEST"/>
+            </log>
+            <log description="Log FULL message" level="full"/>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/custseq">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/payload1">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <payloadFactory media-type="json">
+                <format>{&#xd;
+	"aaa": "bbb",&#xd;
+	"ccc": 1&#xd;
+}</format>
+                <args/>
+            </payloadFactory>
+            <sequence key="LogMessage"/>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/payload2">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <property description="birthNumberProperty" expression="json-eval($.BIRTH_NUMBER)" name="birthNumberProperty" scope="default" type="STRING"/>
+            <payloadFactory description="Create response" media-type="json">
+                <format>{&#xd;
+            	"birthNumber": "$1",&#xd;
+            	"age": $2,&#xd;
+            	"height": $3&#xd;
+            }</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:birthNumberProperty"/>
+                    <arg evaluator="json" expression="$.AGE"/>
+                    <arg literal="true" value="185"/>
+                </args>
+            </payloadFactory>
+            <sequence key="LogMessage"/>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence>
+            <call-template description="Handle error" target="LogTemplate">
+                <with-param name="messagePrefix" value="### ERROR ###"/>
+            </call-template>
+            <respond/>
+        </faultSequence>
+    </resource>
+    <resource methods="POST" uri-template="/js">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <property description="birthNumberProperty" expression="json-eval($.BIRTH_NUMBER)" name="birthNumberProperty" scope="default" type="STRING"/>
+            <property description="ageProperty" expression="json-eval($.AGE)" name="ageProperty" scope="default" type="STRING"/>
+            <filter xpath="get-property('ageProperty') > 50">
+                <then>
+                    <property description="ageProperty" name="ageProperty" scope="default" type="BOOLEAN" value="true"/>
+                </then>
+                <else>
+                    <property description="ageProperty" name="ageProperty" scope="default" type="BOOLEAN" value="false"/>
+                </else>
+            </filter>
+            <script description="Create response" language="js"><![CDATA[var payload = mc.getPayloadJSON();
+var bn = mc.getProperty("birthNumberProperty");
+var a = mc.getProperty("ageProperty");
+var h = 195;
+
+var response = {
+	"birthNumber": ""
+};
+
+response.birthNumber = bn;
+response.ageOver50 = a;
+response.height = h;
+
+mc.setProperty("CONTENT_TYPE", "application/json");
+mc.setPayloadJSON(response);]]></script>
+            <sequence key="LogMessage"/>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/error">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <script description="error == 1?" language="js"><![CDATA[if (mc.getPayloadJSON().error == 1) {
+	throw "USER ERROR!";
+}]]></script>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence>
+            <sequence key="ErrorReport"/>
+            <respond/>
+        </faultSequence>
+    </resource>
+    <resource methods="POST" uri-template="/rsparse">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <script language="js"><![CDATA[function convertListToJSONArray(stringList, separator, keyName) {
+	var out = [];
+	
+	if (!stringList) {
+		return out;
+	}
+	
+	if (!separator) {
+		separator = '|';
+	}
+	
+	if (!keyName) {
+		keyName = 'value';
+	}
+	
+	var arr = stringList.split(separator);
+	var i;
+
+	for (i = 0; i < arr.length; i++) {
+		out[i] = { };
+		out[i][keyName] = arr[i];
+	}	
+
+	return out;
+}
+
+var payload = mc.getPayloadJSON();  
+var out = payload;
+
+out.rs1 = convertListToJSONArray(payload.rs1);
+out.rs2 = convertListToJSONArray(payload.rs2);
+
+mc.setPayloadJSON(out);]]></script>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence>
+            <sequence key="ErrorReport"/>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/wso2/examples/test" name="TestService" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/testsvc">
+        <inSequence>
+            <sequence key="LogMessage"/>
+            <enrich description="Add element">
+                <source clone="false" type="inline">
+                    <service xmlns="">CALLED</service>
+                </source>
+                <target action="child" xpath="//jsonObject"/>
+            </enrich>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

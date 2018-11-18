@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="LogMessage" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log message" level="full">
+        <property expression="json-eval($.)" name="MESSAGE"/>
+    </log>
+</sequence>

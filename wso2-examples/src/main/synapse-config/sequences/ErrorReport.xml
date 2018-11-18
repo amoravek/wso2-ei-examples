@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="ErrorReport" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <call-template description="Log error" target="LogTemplate">
+        <with-param name="messagePrefix" value="### ERROR ###"/>
+    </call-template>
+    <payloadFactory description="create error message" media-type="json">
+        <format>{"errorCode":"$1","errorException":"$2","errorMessage": "$3", "errorDetail": "$4"}</format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+            <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION"/>
+            <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+            <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+        </args>
+    </payloadFactory>
+</sequence>

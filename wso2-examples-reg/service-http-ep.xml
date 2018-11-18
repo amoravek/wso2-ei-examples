@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="service-http-ep" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="post" uri-template="{uri.var.schema}://{uri.var.host}:{uri.var.port}/wso2/examples/test/testsvc"/>
+    <property name="uri.var.schema" value="http"/>
+    <property name="uri.var.port" value="8280"/>
+    <property name="uri.var.host" value="localhost"/>
+</endpoint>

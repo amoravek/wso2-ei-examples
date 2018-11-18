@@ -1,0 +1,657 @@
+{
+	"info": {
+		"_postman_id": "8c9f1391-8167-409a-a6d0-01105dfe7fed",
+		"name": "WSO2 Examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EI Examples",
+			"item": [
+				{
+					"name": "simple",
+					"item": [
+						{
+							"name": "base",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"whatever\": \"however\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/simple/base",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"simple",
+										"base"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "custseq",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"whatever\": \"however\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/simple/custseq",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"simple",
+										"custseq"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payload1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"whatever\": \"however\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/simple/payload1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"simple",
+										"payload1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payload2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"whatever\": \"however\",\n\t\"BIRTH_NUMBER\": \"7205244453\",\n\t\"AGE\": 65\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/simple/payload2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"simple",
+										"payload2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "js",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"whatever\": \"however\",\n\t\"BIRTH_NUMBER\": \"7205244453\",\n\t\"AGE\": 65\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/simple/js",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"simple",
+										"js"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "error",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"whatever\": \"however\",\n\t\"BIRTH_NUMBER\": \"7205244453\",\n\t\"AGE\": 65,\n\t\"error\": 1\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/simple/error",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"simple",
+										"error"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "testsvc",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"whatever\": \"however\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/test/testsvc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"test",
+										"testsvc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rest",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"whatever\": \"however\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/simple/rest",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"simple",
+										"rest"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rsparse",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"rs1\": \"val1|val2|val3\",\n\t\"rs2\": \"val4|val5\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/simple/rsparse",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"simple",
+										"rsparse"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "advanced",
+					"item": [
+						{
+							"name": "foreach",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"parts\": [\"a\", \"b\"]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/advanced/foreach",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"advanced",
+										"foreach"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clone",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"whatever\": \"however\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/advanced/clone",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"advanced",
+										"clone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rest",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"whatever\": \"however\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/advanced/rest",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"advanced",
+										"rest"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "parallelserial",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"whatever\": \"however\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/advanced/parallelserial",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"advanced",
+										"parallelserial"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "tif",
+					"item": [
+						{
+							"name": "simple",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"SPECIAL_CODE\": \"\",\r\n\"RC\": \"7205244453\",\r\n\"CONTRACT_ID\": \"\",\r\n\"CONTRACT_SYSTEM\": \"\",\r\n\"NAME\": \"Uta\",\r\n\"SURNAME\": \"AAAA\",\r\n\"ONLINE_CHECK\": 0,\r\n\"ICO\": \"\",\r\n\"CLIENT_TYPE\": \"\",\r\n\"POS_ID\": \"\",\r\n\"CHANNEL_ID\": \"\",\r\n\"PURPOSE\": \"IVR_CONTROL\",\r\n\"BUS_PROD_CLASS\": \"\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/tif/simple",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"tif",
+										"simple"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "codebook",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"values\": [\r\n\t\t{ \"GENDER\": \"\" },\r\n\t\t{ \"GENDER\": \"1\" },\r\n\t\t{ \"GENDER\": \"2\" }\r\n\t]\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/tif/codebook",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"tif",
+										"codebook"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "advanced",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"SPECIAL_CODE\": \"\",\r\n\"RC\": \"7205244453\",\r\n\"CONTRACT_ID\": \"\",\r\n\"CONTRACT_SYSTEM\": \"\",\r\n\"NAME\": \"Uta\",\r\n\"SURNAME\": \"AAAA\",\r\n\"ONLINE_CHECK\": 0,\r\n\"ICO\": \"\",\r\n\"CLIENT_TYPE\": \"\",\r\n\"POS_ID\": \"\",\r\n\"CHANNEL_ID\": \"\",\r\n\"PURPOSE\": \"IVR_CONTROL\",\r\n\"BUS_PROD_CLASS\": \"\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8280/wso2/training/tif/advanced",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8280",
+									"path": [
+										"wso2",
+										"examples",
+										"tif",
+										"advanced"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "API GW TST1",
+			"item": [
+				{
+					"name": "Scenario 1 + 3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28334346-8c71-3285-baf7-ccfb09d50647",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "user_id",
+								"value": "GEBTHYJ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"SPECIAL_CODE\": \"\",\r\n\t\"RC\": \"7205244453\",\r\n\t\"CONTRACT_ID\": \"\",\r\n\t\"CONTRACT_SYSTEM\": \"\",\r\n\t\"NAME\": \"Uta\",\r\n\t\"SURNAME\": \"AAAA\",\r\n\t\"ONLINE_CHECK\": 0,\r\n\t\"ICO\": \"\",\r\n\t\"CLIENT_TYPE\": \"\",\r\n\t\"POS_ID\": \"\",\r\n\t\"CHANNEL_ID\": \"\",\r\n\t\"PURPOSE\": \"IVR_CONTROL\",\r\n\t\"BUS_PROD_CLASS\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/training/DO_KO_005/001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"examples",
+								"DO_KO_005",
+								"001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Scenario 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28334346-8c71-3285-baf7-ccfb09d50647",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "user_id",
+								"value": "GEBTHYJ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"SPECIAL_CODE\": \"\",\r\n\t\"RC\": \"7205244453\",\r\n\t\"CONTRACT_ID\": \"\",\r\n\t\"CONTRACT_SYSTEM\": \"\",\r\n\t\"NAME\": \"Uta\",\r\n\t\"SURNAME\": \"AAAA\",\r\n\t\"ONLINE_CHECK\": 0,\r\n\t\"ICO\": \"\",\r\n\t\"CLIENT_TYPE\": \"\",\r\n\t\"POS_ID\": \"\",\r\n\t\"CHANNEL_ID\": \"\",\r\n\t\"PURPOSE\": \"IVR_CONTROL\",\r\n\t\"BUS_PROD_CLASS\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/training/MWF648/001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"examples",
+								"MWF648",
+								"001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
