@@ -1,2 +1,2 @@
-# wso2-ei-examples
-WSO2 EI - various examples
+# wso2-examples
+WSO2 - various examples
