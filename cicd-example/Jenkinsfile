@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'cicd-example/'
+                sh 'newman run cicd-example/postman/WSO2_API_PUBLISHER.postman_collection.json -e cicd-example/rest-apis/petstore/Development.postman_environment.json'
             }
         }
     }
