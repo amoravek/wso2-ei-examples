@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e836711c-1650-41fa-9064-d295404bde32",
+		"_postman_id": "b5dc58d6-ac25-4d89-96ff-1402de59b133",
 		"name": "WSO2_API_PUBLISHER",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -222,7 +222,10 @@
 						"value": "Bearer {{access_token_with_scope_view}}"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{gatewayURL}}/api/am/publisher/apis?query=name:{{apiName}}",
 					"host": [
@@ -328,7 +331,8 @@
 					"formdata": [
 						{
 							"key": "apiDefinition",
-							"type": "file"
+							"type": "file",
+							"value": ""
 						}
 					]
 				},
@@ -428,7 +432,10 @@
 						"value": "application/json"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{gatewayURL}}/api/am/publisher/apis/change-lifecycle?action=Publish&apiId={{apiId}}",
 					"host": [
