@@ -113,11 +113,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/token",
+					"raw": "{{gatewayURL}}/oauth2/token",
 					"host": [
 						"{{gatewayURL}}"
 					],
 					"path": [
+						"oauth2",
 						"token"
 					]
 				}
@@ -177,11 +178,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/token",
+					"raw": "{{gatewayURL}}/oauth2/token",
 					"host": [
 						"{{gatewayURL}}"
 					],
 					"path": [
+						"oauth2",
 						"token"
 					]
 				}
@@ -228,7 +230,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/api/am/publisher/apis?query=name:{{apiName}}",
+					"raw": "{{gatewayURL}}/api/am/publisher/v0.11/apis?query=name:{{apiName}}",
 					"host": [
 						"{{gatewayURL}}"
 					],
@@ -236,6 +238,7 @@
 						"api",
 						"am",
 						"publisher",
+						"v0.11",
 						"apis"
 					],
 					"query": [
@@ -280,7 +283,7 @@
 					"raw": "{\n\t\"id\": \"7a2298c4-c905-403f-8fac-38c73401631f\",\n   \"name\": \"{{apiName}}\",\n   \"description\": \"{{apiName}}\",\n   \"context\": \"/{{apiContext}}\",\n   \"version\": \"1.0.0\",\n   \"provider\": \"{{username}}\",\n   \"apiDefinition\":\"{}\",\n   \"wsdlUri\": null,\n   \"responseCaching\": \"Disabled\",\n   \"cacheTimeout\": 300,\n   \"destinationStatsEnabled\": null,\n   \"isDefaultVersion\": false,\n   \"type\": \"HTTP\",\n   \"transport\":    [\n      \"http\",\n      \"https\"\n   ],\n   \"tags\": [\"foo\"],\n   \"tiers\": [\"Unlimited\"],\n   \"maxTps\":    {\n      \"sandbox\": 5000,\n      \"production\": 1000\n   },\n   \"thumbnailUri\": null,\n   \"visibility\": \"PUBLIC\",\n   \"visibleRoles\": [],\n   \"visibleTenants\": [],\n   \"endpointConfig\": \"{\\\"production_endpoints\\\":{\\\"url\\\":\\\"{{backendAPIEndpoint}}\\\",\\\"config\\\":null},\\\"sandbox_endpoints\\\":{\\\"url\\\":\\\"{{backendAPIEndpoint}}\\\",\\\"config\\\":null},\\\"endpoint_type\\\":\\\"http\\\"}\",\n   \"endpointSecurity\":    {\n      \"username\": \"user\",\n      \"type\": \"basic\",\n      \"password\": \"pass\"\n   },\n   \"gatewayEnvironments\": \"Production and Sandbox\",\n   \"sequences\": [],\n   \"subscriptionAvailability\": null,\n   \"subscriptionAvailableTenants\": [],\n   \"businessInformation\":    {\n      \"businessOwnerEmail\": \"{{username}}\",\n      \"technicalOwnerEmail\": \"{{username}}\",\n      \"technicalOwner\": \"{{username}}\",\n      \"businessOwner\": \"{{username}}\"\n   },\n   \"corsConfiguration\":    {\n      \"accessControlAllowOrigins\": [\"*\"],\n      \"accessControlAllowHeaders\":       [\n         \"authorization\",\n         \"Access-Control-Allow-Origin\",\n         \"Content-Type\",\n         \"SOAPAction\"\n      ],\n      \"accessControlAllowMethods\":       [\n         \"GET\",\n         \"PUT\",\n         \"POST\",\n         \"DELETE\",\n         \"PATCH\",\n         \"OPTIONS\"\n      ],\n      \"accessControlAllowCredentials\": false,\n      \"corsConfigurationEnabled\": false\n   }\n}\n"
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/api/am/publisher/apis",
+					"raw": "{{gatewayURL}}/api/am/publisher/v0.11/apis",
 					"host": [
 						"{{gatewayURL}}"
 					],
@@ -288,6 +291,7 @@
 						"api",
 						"am",
 						"publisher",
+						"v0.11",
 						"apis"
 					]
 				}
@@ -338,7 +342,7 @@
 					]
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/api/am/publisher/apis/{{apiId}}/swagger",
+					"raw": "{{gatewayURL}}/api/am/publisher/v0.11/apis/{{apiId}}/swagger",
 					"host": [
 						"{{gatewayURL}}"
 					],
@@ -346,6 +350,7 @@
 						"api",
 						"am",
 						"publisher",
+						"v0.11",
 						"apis",
 						"{{apiId}}",
 						"swagger"
@@ -408,11 +413,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/token",
+					"raw": "{{gatewayURL}}/oauth2/token",
 					"host": [
 						"{{gatewayURL}}"
 					],
 					"path": [
+						"oauth2",
 						"token"
 					]
 				}
@@ -438,7 +444,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/api/am/publisher/apis/change-lifecycle?action=Publish&apiId={{apiId}}",
+					"raw": "{{gatewayURL}}/api/am/publisher/v0.11/apis/change-lifecycle?action=Publish&apiId={{apiId}}",
 					"host": [
 						"{{gatewayURL}}"
 					],
@@ -446,6 +452,7 @@
 						"api",
 						"am",
 						"publisher",
+						"v0.11",
 						"apis",
 						"change-lifecycle"
 					],
