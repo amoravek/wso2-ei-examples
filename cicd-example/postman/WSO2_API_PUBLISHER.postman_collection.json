@@ -47,12 +47,13 @@
 					"raw": "{\n    \"callbackUrl\": \"www.google.lk\",\n    \"clientName\": \"rest_api_publisher\",\n    \"tokenScope\": \"Production\",\n    \"owner\": \"{{username}}\",\n    \"grantType\": \"password refresh_token\",\n    \"saasApp\": true\n}"
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/client-registration/register",
+					"raw": "{{gatewayURL}}/client-registration/v0.11/register",
 					"host": [
 						"{{gatewayURL}}"
 					],
 					"path": [
 						"client-registration",
+						"v0.11",
 						"register"
 					]
 				}
