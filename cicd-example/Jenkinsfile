@@ -3,8 +3,10 @@ pipeline {
 
     stages {
         stage('Preparation') { // for display purposes
-            // Get some code from a GitHub repository
-            git 'https://github.com/amoravek/wso2-examples.git'
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/amoravek/wso2-examples.git'
+            }
         }
         stage('Build') {
             steps {
