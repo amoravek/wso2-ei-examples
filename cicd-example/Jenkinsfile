@@ -1,6 +1,15 @@
-node {
-   stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
-      git 'https://github.com/amoravek/wso2-examples.git'
-   }
+pipeline {
+    agent any
+
+    stages {
+        stage('Preparation') { // for display purposes
+            // Get some code from a GitHub repository
+            git 'https://github.com/amoravek/wso2-examples.git'
+        }
+        stage('Build') {
+            steps {
+                sh 'cicd-example/'
+            }
+        }
+    }
 }
