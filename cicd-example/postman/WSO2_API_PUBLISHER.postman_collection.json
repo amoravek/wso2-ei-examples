@@ -113,12 +113,13 @@
 					]
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/oauth2/token",
+					"raw": "{{gatewayURL}}/oauth2/v0.11/token",
 					"host": [
 						"{{gatewayURL}}"
 					],
 					"path": [
 						"oauth2",
+						"v0.11",
 						"token"
 					]
 				}
@@ -178,12 +179,13 @@
 					]
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/oauth2/token",
+					"raw": "{{gatewayURL}}/oauth2/v0.11/token",
 					"host": [
 						"{{gatewayURL}}"
 					],
 					"path": [
 						"oauth2",
+						"v0.11",
 						"token"
 					]
 				}
@@ -413,12 +415,13 @@
 					]
 				},
 				"url": {
-					"raw": "{{gatewayURL}}/oauth2/token",
+					"raw": "{{gatewayURL}}/oauth2/v0.11/token",
 					"host": [
 						"{{gatewayURL}}"
 					],
 					"path": [
 						"oauth2",
+						"v0.11",
 						"token"
 					]
 				}
