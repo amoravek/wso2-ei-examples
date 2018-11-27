@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b5dc58d6-ac25-4d89-96ff-1402de59b133",
+		"_postman_id": "f0f30589-f6ed-4add-b9ec-cdba1bc8806b",
 		"name": "WSO2_API_PUBLISHER",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,22 +11,25 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"type": "text/javascript",
+						"id": "e226f1c3-2244-4758-b9bc-521c0a8026e4",
 						"exec": [
 							"var base64Key = btoa(postman.getGlobalVariable(\"username\") + ':' + postman.getGlobalVariable(\"password\"));",
 							"postman.setEnvironmentVariable(\"base64Key\", base64Key);"
-						]
+						],
+						"type": "text/javascript"
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
-						"type": "text/javascript",
+						"id": "c4c7a77e-f1bd-4a56-ba79-d596bc58d65c",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"clientId\", jsonData.clientId);",
-							"postman.setEnvironmentVariable(\"clientSecret\", jsonData.clientSecret);"
-						]
+							"postman.setEnvironmentVariable(\"clientSecret\", jsonData.clientSecret);",
+							""
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -66,12 +69,24 @@
 				{
 					"listen": "test",
 					"script": {
-						"type": "text/javascript",
+						"id": "af67145b-5bf7-4934-9f95-9910c0b5de58",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);",
 							""
-						]
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e00a0a70-f0eb-4c47-be09-b72f445eb1ff",
+						"exec": [
+							"var base64Key = btoa(postman.getEnvironmentVariable(\"clientId\") + ':' + postman.getEnvironmentVariable(\"clientSecret\"));",
+							"postman.setEnvironmentVariable(\"base64Key\", base64Key);"
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -80,7 +95,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh"
+						"value": "Basic {{base64Key}}"
 					},
 					{
 						"key": "Content-Type",
@@ -131,12 +146,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"type": "text/javascript",
+						"id": "d5aada68-6f4a-4507-9038-59e7b1917c4c",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"access_token_with_scope_view\", jsonData.access_token);",
 							""
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -145,7 +161,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh"
+						"value": "Basic {{base64Key}}"
 					},
 					{
 						"key": "Content-Type",
@@ -304,14 +320,15 @@
 				{
 					"listen": "test",
 					"script": {
-						"type": "text/javascript",
+						"id": "1a911d4a-4701-4c21-9337-732a12657f67",
 						"exec": [
 							"if (postman.getEnvironmentVariable(\"apiStatus\") === \"PUBLISHED\") {",
 							"   postman.setNextRequest(null);",
 							"  ",
 							"}",
 							""
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -337,7 +354,7 @@
 						{
 							"key": "apiDefinition",
 							"type": "file",
-							"value": ""
+							"src": "cicd-example/rest-apis/petstore/swagger.json"
 						}
 					]
 				},
@@ -366,12 +383,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"type": "text/javascript",
+						"id": "08482718-d72e-411a-b584-3741b2b74e90",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"access_token_scope_publish\", jsonData.access_token);",
 							""
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -380,7 +398,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh"
+						"value": "Basic {{base64Key}}"
 					},
 					{
 						"key": "Content-Type",
